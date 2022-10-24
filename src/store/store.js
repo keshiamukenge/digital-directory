@@ -21,5 +21,8 @@ export function userStore() {
 		}
 	}
 }
-
 export const user = userStore();
+
+export const isLoading = writable(false);
+
+export const userResearch = writable('');
