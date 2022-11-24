@@ -1,22 +1,15 @@
 <script>
   import { afterUpdate } from "svelte";
   import DefaultButton from "./DefaultButton.svelte";
-  import {
-    isLoading,
-    userResearch,
-    selectedFilters,
-    users,
-    displayUsers,
-  } from "../store/store";
+  import { users, displayUsers } from "../store/users";
+  import { userResearch } from "../store/user";
+  import { isLoading } from "../store/main";
 
   export let data;
 
   let inputValue = "";
   let suggestions;
   $: valueIsSelected = false;
-  let openFilters = false;
-  let initialId = 0;
-  const filters = ["Homme", "Femme"];
 
   function setAutoComplete() {
     return data.filter((value) =>
@@ -41,7 +34,6 @@
     displayUsers.set(
       $users.filter((user) => user.name.first === $userResearch)
     );
-    console.log(displayUsers);
 
     setTimeout(() => {
       isLoading.set(false);
@@ -91,55 +83,5 @@
       {/if}
     </div>
     <DefaultButton onClick={onSearch} buttonText="Rechercher" customClass="" />
-  </div>
-  <div class="w-full relative flex">
-    <DefaultButton
-      customClass="mr-4 mt-2 min-w-[8rem]"
-      onClick={() => (openFilters = !openFilters)}
-      buttonText="+ Filtre"
-    />
-    <ul
-      class="bg-slate-50 w-48 absolute z-10 top-[55px] rounded text-black {openFilters
-        ? 'block'
-        : 'hidden'}"
-    >
-      {#each filters as filter}
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <li
-          on:click={() => {
-            selectedFilters.set([
-              ...$selectedFilters,
-              {
-                id: initialId + 1,
-                label: filter,
-                value: "",
-              },
-            ]);
-            openFilters = !openFilters;
-          }}
-          class="text-left h-8 hover:bg-zinc-300 hover:cursor-pointer m-2 rounded pl-2 pr-2"
-        >
-          <span class="block pt-1">{filter}</span>
-        </li>
-      {/each}
-    </ul>
-    <ul class="w-full flex mt-2">
-      {#each $selectedFilters as selectedFilter}
-        <li
-          class="flex pt-2 pb-2 pr-4 pl-4 rounded border-slate-400 border-solid border-[1.5px] mr-2 ml-2"
-        >
-          <!-- svelte-ignore a11y-click-events-have-key-events -->
-          <p
-            on:click={() => {
-              selectedFilters.set(
-                $selectedFilters.splice(0, selectedFilter.id)
-              );
-            }}
-          >
-            {selectedFilter.label}
-          </p>
-        </li>
-      {/each}
-    </ul>
   </div>
 </div>

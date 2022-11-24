@@ -1,4 +1,4 @@
-<div class="w-screen h-screen absolute left-0 right-0 bottom-0 top-0 flex justify-center">
+<div class="w-screen h-screen fixed left-0 right-0 bottom-0 top-0 flex justify-center">
 	<div class="absolute top-0 left-0 right-0 bottom-0 z-10 bg-slate-600 opacity-80"></div>
 	<div class="loader m-auto relative z-20"></div>
 </div>

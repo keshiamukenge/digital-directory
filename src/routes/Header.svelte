@@ -1,6 +1,7 @@
 <script>
-  import DefaultButton from "./DefaultButton.svelte";
-  import { user, friends } from "../store/store";
+  import DefaultButton from "../lib/DefaultButton.svelte";
+  import { friends } from "../store/friends";
+  import { user } from "../store/user";
   import siteIcon from "../assets/svelte.svg";
   import iconProfil from "../assets/profil.svg";
 </script>
@@ -23,12 +24,20 @@
       <span class="block text-lg">{$user.lastName}</span>
     </div>
   </div>
+  <p class="w-full text-left mb-4 font-black">
+    <strong>
+      <a href="/">ACCUEIL</a>
+    </strong>
+  </p>
   <ul class="w-full text-left mb-4">
-    <span><strong class="mr-2">MES AMIS</strong>({$friends.length})</span>
+    <p>MES AMIS({$friends.length})</p>
     {#each $friends as friend}
       <li class="ml-2">{friend.name.first} {friend.name.last}</li>
     {/each}
   </ul>
+  <p class="w-full text-left mb-4 font-black">
+    <a href="/about">A PROPOS</a>
+  </p>
   <DefaultButton
     onClick={user.logout}
     customClass=""

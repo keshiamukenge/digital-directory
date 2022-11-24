@@ -1,6 +1,6 @@
 <script>
   import DefaultButton from "./DefaultButton.svelte";
-  import { friends } from "../store/store";
+  import { friends } from "../store/friends";
 
   export let user;
 </script>
@@ -21,11 +21,6 @@
       customClass="w-full mb-2"
       onClick={() => friends.set([...$friends, user])}
       buttonText="Ajouter aux amis"
-    />
-    <DefaultButton
-      customClass="w-full"
-      onClick={() => {}}
-      buttonText="Voir plus"
     />
   </div>
 </div>

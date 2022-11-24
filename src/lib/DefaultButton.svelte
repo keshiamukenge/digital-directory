@@ -4,4 +4,6 @@
 	export let customClass;
 </script>
 
-<button on:click={onClick} class="text-white {customClass}">{buttonText}</button>
+<button on:click={onClick} class="text-white {customClass}">
+	{buttonText}
+</button>

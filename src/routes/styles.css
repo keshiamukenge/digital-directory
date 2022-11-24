@@ -41,11 +41,21 @@ h1 {
   line-height: 1.1;
 }
 
+a {
+	text-decoration: none;
+	color: #242424;
+}
+
+a:hover {
+	opacity: 0.6;
+	transition: linear 600ms;
+}
+
 .card {
   padding: 2em;
 }
 
-#app {
+.app {
   max-width: 1780px;
   margin: 0 auto;
   width: 100vw;

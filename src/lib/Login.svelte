@@ -1,6 +1,6 @@
 <script>
-	import FormButton from '../lib/FormButton.svelte';
-	import { user } from '../store/store';
+	import FormButton from './FormButton.svelte';
+	import { user } from '../store/user';
 
 	let userValue = {
 		firstName: "",
